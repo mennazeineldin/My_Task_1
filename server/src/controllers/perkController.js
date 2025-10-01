@@ -78,8 +78,8 @@ export async function updatePerk(req, res, next) {
     // find perk by ID and update it with validated values
     const doc = await Perk.findByIdAndUpdate(
       req.params.id,
-      { $set: value },
-      { new: true, runValidators: true } // new -> return updated doc
+      value,
+      { new: true } // new -> return updated doc
     );
 
     if (!doc) return res.status(404).json({ message: 'Perk not found' });
